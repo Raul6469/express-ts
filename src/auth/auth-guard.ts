@@ -1,6 +1,5 @@
 import * as express from 'express'
-import { Response } from 'express'
-import { Request, UserPayload } from '../declarations'
+import { Request, Response } from 'express'
 var router = express.Router()
 
 import * as jwt from 'jsonwebtoken'

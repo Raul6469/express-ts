@@ -1,10 +1,10 @@
-import { Request } from 'express';
-
-export interface Request extends Request {
-    user?: UserPayload
+declare namespace Express {
+    interface Request {
+        user?: UserPayload;
+    }
 }
 
-export interface UserPayload {
+declare interface UserPayload {
     id: number
     username: string
 }

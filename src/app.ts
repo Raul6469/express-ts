@@ -1,7 +1,6 @@
 require('dotenv').config()
 
-import * as express from 'express'
-import { Request, Response } from 'express'
+import express from "express";
 
 import * as greeting from './api/greeting'
 import { MessageAPI } from './api/messages-route'
