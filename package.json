@@ -6,8 +6,8 @@
   "scripts": {
     "start": "concurrently --kill-others \"npm run build-ts-watch\" \"npm run serve-debug\"",
     "serve": "npm run build-ts && node dist/server.js",
-    "build-ts": "tsc",
-    "build-ts-watch": "tsc -w",
+    "build": "tsc",
+    "build-watch": "tsc -w",
     "serve-debug": "nodemon --inspect dist/app.js",
     "test": "jest --forceExit --detectOpenHandles --coverage"
   },

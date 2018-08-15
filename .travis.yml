@@ -9,7 +9,7 @@ node_js:
   - "node"
 
 script:
-  - npm run build-ts
+  - npm run build
   - npm test
 
 after_success:
