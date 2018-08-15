@@ -15,7 +15,7 @@ router.all('*', (req: Request, res: Response, next) => {
             res.status(401).send({error: 'You must provide a Bearer token'})
         } else {
             try {
-                req.user = jwt.verify(token, process.env.TOKEN_SECRET) as UserPayload
+                req.user = jwt.verify(token, process.env.TOKEN_SECRET || 'mySecret') as UserPayload
                 next()
             } catch (error) {
                 res.status(401).send({error: 'Invalid token'})

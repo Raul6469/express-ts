@@ -49,7 +49,6 @@ describe("Authentication", () => {
           .set('Authorization', 'Bearer ' + token)
           .expect(200)
           .then((response: any) => {
-            console.log(response)
             expect(response.body.message).to.equal('Hello raul!')
             done();
           })
