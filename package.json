@@ -4,11 +4,11 @@
   "description": "",
   "main": "src/app.ts",
   "scripts": {
-    "start": "concurrently --kill-others \"npm run build-ts-watch\" \"npm run serve-debug\"",
-    "serve": "npm run build-ts && node dist/server.js",
+    "start": "concurrently --kill-others \"npm run build-watch\" \"npm run serve-debug\"",
+    "serve": "npm run build && node dist/server.js",
     "build": "tsc",
     "build-watch": "tsc -w",
-    "serve-debug": "nodemon --inspect dist/app.js",
+    "serve-debug": "nodemon --inspect dist/server.js",
     "test": "jest --forceExit --detectOpenHandles --coverage"
   },
   "author": "",
