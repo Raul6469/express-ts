@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/app.ts",
   "scripts": {
-    "start": "concurrently --kill-others \"npm run build-watch\" \"npm run serve-debug\"",
+    "start": "npm run build && concurrently --kill-others \"npm run build-watch\" \"npm run serve-debug\"",
     "serve": "npm run build && node dist/server.js",
     "build": "tsc",
     "build-watch": "tsc -w",
