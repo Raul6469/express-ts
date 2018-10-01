@@ -1,6 +1,7 @@
 ## Custom
 package-lock.json
 dist/
+data/
 
 # Logs
 logs

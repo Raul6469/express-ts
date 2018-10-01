@@ -1,11 +1,14 @@
 import * as express from 'express'
 import { MessageManager } from '../services/message-manager';
+import { Message } from '../entities/message';
 var router = express.Router()
 
 const messageManager = MessageManager.Instance
 
 router.get('/', (req, res) => {
-    res.send(messageManager.getMessages())
+    messageManager.getMessages().then((messages: Message[]) => {
+        res.send(messages)
+    })
 })
 
 router.post('/', (req, res) => {

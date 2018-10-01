@@ -1,32 +1,31 @@
 import { Message } from "../entities/message"
+import { MongoDB } from "../providers/mongodb";
 
 export class MessageManager {
 
     private static _instance: MessageManager
-
-    private messages: Array<Message>
-    private messageCounter: number
-
-    private constructor() {
-        this.messageCounter = 0
-        this.messages = new Array<Message>()
-    }
 
     public static get Instance() {
         return this._instance || (this._instance = new this());
     }
 
     public pushMessage(message: string) {
-        this.messages.push(
+        let messagesDB = MongoDB.Instance.getClient().collection('messages');
+
+        messagesDB.insert(
             {
-                id: this.messageCounter,
                 message: message
             }
         )
-        this.messageCounter++
     }
 
-    public getMessages(): Array<Message> {
-        return this.messages
+    public getMessages(): Promise<Message[]> {
+        return new Promise((resolve, reject) => {
+            let messagesDB = MongoDB.Instance.getClient().collection('messages');
+    
+            messagesDB.find({}).toArray((err: any, docs: Message[]) => {
+                resolve(docs);
+            })
+        })
     }
 }
