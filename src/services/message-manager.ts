@@ -3,13 +3,7 @@ import { MongoDB } from "../providers/mongodb";
 
 export class MessageManager {
 
-    private static _instance: MessageManager
-
-    public static get Instance() {
-        return this._instance || (this._instance = new this());
-    }
-
-    public pushMessage(message: string) {
+    public static pushMessage(message: string) {
         let messagesDB = MongoDB.Instance.getClient().collection('messages');
 
         messagesDB.insert(
@@ -19,7 +13,7 @@ export class MessageManager {
         )
     }
 
-    public getMessages(): Promise<Message[]> {
+    public static getMessages(): Promise<Message[]> {
         return new Promise((resolve, reject) => {
             let messagesDB = MongoDB.Instance.getClient().collection('messages');
     
