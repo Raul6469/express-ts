@@ -6,6 +6,7 @@ let cors = require('cors');
 
 import * as greeting from './api/greeting'
 import { MessageAPI } from './api/messages-route'
+import { UserAPI } from "./api/user-route";
 import { AuthGuard } from './auth/auth-guard';
 import { TokenIssuer } from './auth/token-issuer';
 import { MongoDB } from "./providers/mongodb";
@@ -19,6 +20,7 @@ app.use(cors())
 app.use(express.json())
 
 app.use('/auth', TokenIssuer)
+app.use('/user', UserAPI)
 
 app.use(AuthGuard)
 

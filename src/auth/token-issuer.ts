@@ -1,29 +1,22 @@
 import * as express from 'express'
 import { Request, Response } from 'express'
+import { UserManager } from '../services/user-manager';
 var router = express.Router()
 
 import * as jwt from 'jsonwebtoken'
-
-const users = [
-    {
-        id: 1,
-        username: 'raul',
-        password: 'pwd'
-    }
-]
 
 const tokenOptions: jwt.SignOptions = {
     expiresIn: 60*15,
     issuer: 'express-ts'
 }
 
-router.post('/', (req: Request, res: Response) => {
-    const user = users.find(user => req.body.username === user.username && req.body.password === user.password)
+router.post('/', async (req: Request, res: Response) => {
+    const user = await UserManager.authenticateUser(req.body.username, req.body.password);
     
     if(user) {
         const payload = {
             id: user.id,
-            username: user.username
+            username: user.login
         }
         const token = jwt.sign(payload, process.env.TOKEN_SECRET || 'mySecret', tokenOptions)
 
