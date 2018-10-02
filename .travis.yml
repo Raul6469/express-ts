@@ -3,10 +3,16 @@ language: node_js
 install:
   - npm install
 
-
 node_js:
   - "8"
   - "node"
+
+services:
+  - mongodb
+
+before_script:
+  - export MONGODB_URL="mongodb://localhost:27017"
+  - export DB_NAME="express-ts"
 
 script:
   - npm run build
