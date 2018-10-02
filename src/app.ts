@@ -8,8 +8,11 @@ import * as greeting from './api/greeting'
 import { MessageAPI } from './api/messages-route'
 import { AuthGuard } from './auth/auth-guard';
 import { TokenIssuer } from './auth/token-issuer';
+import { MongoDB } from "./providers/mongodb";
 
 const app = express()
+
+MongoDB.Instance
 
 app.use(cors())
 
