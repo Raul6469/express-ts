@@ -13,8 +13,6 @@ import { MongoDB } from "./providers/mongodb";
 
 const app = express()
 
-MongoDB.Instance
-
 app.use(cors())
 
 app.use(express.json())
