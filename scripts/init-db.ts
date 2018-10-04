@@ -8,20 +8,28 @@ async function initDb() {
     let db: Db = await MongoDB.Instance.getClient();
 
     await initData(db, 'users', 'data/users.json');
+    await initData(db, 'messages');
 
     process.exit(0);
 }
 
-async function initData(db: Db, collectionName: string, filePath: string) {
-    return new Promise((resolve, reject) => {
-        fs.readFile(filePath, async (err, JsonData) => {
-            const data = JSON.parse(JsonData.toString());
+async function initData(db: Db, collectionName: string, filePath?: string) {
+    return new Promise(async (resolve, reject) => {
+        if(filePath) {
+            fs.readFile(filePath, async (err, JsonData) => {
+                const data = JSON.parse(JsonData.toString());
+                let collection = db.collection(collectionName);
+                await collection.deleteMany({});
+                await collection.insertMany(data);
+                console.log('> ' + collectionName + ' collection initialized')
+                resolve();
+            })
+        } else {
             let collection = db.collection(collectionName);
             await collection.deleteMany({});
-            await collection.insertMany(data);
-            console.log('> ' + collectionName + ' collection initialized')
+            console.log('> ' + collectionName + ' collection reset');
             resolve();
-        })
+        }
     })
 }
 
