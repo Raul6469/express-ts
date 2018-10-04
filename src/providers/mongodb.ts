@@ -24,7 +24,6 @@ export class MongoDB {
                 let currentThis = this;
                 mongoClient.connect(this.url, { useNewUrlParser: true }, (err: any, database: any) => {
                     if(err) reject();
-                    console.log('Connected to the database');
                     const db = database.db(process.env.DB_NAME);
                     currentThis.db = db;
                     resolve(db);
