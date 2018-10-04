@@ -10,7 +10,7 @@
     "build": "tsc",
     "build-watch": "tsc -w",
     "serve-debug": "nodemon --inspect dist/server.js",
-    "test": "jest --forceExit --detectOpenHandles --coverage"
+    "test": "npm run init-db && jest --forceExit --detectOpenHandles --coverage"
   },
   "author": "",
   "license": "ISC",
