@@ -9,19 +9,27 @@ export class MongoDB {
     private url: string = process.env.MONGODB_URL;
 
     private constructor() {
-        let mongoClient = require('mongodb').MongoClient;
-        let currentThis = this;
-        mongoClient.connect(this.url, { useNewUrlParser: true }, (err: any, database: any) => { 
-            const db = database.db(process.env.DB_NAME);
-            currentThis.db = db;
-        })
     }
 
     public static get Instance() {
         return this._instance || (this._instance = new this());
     }
 
-    public getClient(): Db {
-        return this.db;
+    public async getClient(): Promise<Db> {
+        return new Promise<Db>((resolve, reject) => {
+            if(this.db) {
+                return resolve(this.db);
+            } else {
+                let mongoClient = require('mongodb').MongoClient;
+                let currentThis = this;
+                mongoClient.connect(this.url, { useNewUrlParser: true }, (err: any, database: any) => {
+                    if(err) reject();
+                    console.log('Connected to the database');
+                    const db = database.db(process.env.DB_NAME);
+                    currentThis.db = db;
+                    resolve(db);
+                })
+            }
+        })
     }
 }
