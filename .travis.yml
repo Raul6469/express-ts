@@ -13,6 +13,8 @@ services:
 before_script:
   - export MONGODB_URL="mongodb://localhost:27017"
   - export DB_NAME="express-ts"
+  - sleep 15
+  - npm run init-db
 
 script:
   - npm run build
