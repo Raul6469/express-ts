@@ -9,7 +9,7 @@ export class UserManager {
       let db = await MongoDB.Instance.getClient()
       let userDB = db.collection('users');
 
-      userDB.insert(user, (err: MongoError, res: WriteOpResult) => {
+      userDB.insertOne(user, (err: MongoError, res: WriteOpResult) => {
         if (!err) {
           resolve();
         }

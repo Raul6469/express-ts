@@ -7,7 +7,7 @@ export class MessageManager {
         let db = await MongoDB.Instance.getClient();
         let messagesDB = db.collection('messages');
 
-        messagesDB.insert(
+        messagesDB.insertOne(
             {
                 message: message
             }
