@@ -7,4 +7,5 @@ declare namespace Express {
 declare interface UserPayload {
   id: number;
   username: string;
+  role: number;
 }
