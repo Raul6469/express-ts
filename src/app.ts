@@ -1,27 +1,27 @@
-require('dotenv').config()
+require("dotenv").config();
 
 import express from "express";
 
-let cors = require('cors');
+const cors = require("cors");
 
-import * as greeting from './api/greeting'
-import { MessageAPI } from './api/messages-route'
+import * as greeting from "./api/greeting";
+import { MessageAPI } from "./api/messages-route";
 import { UserAPI } from "./api/user-route";
-import { AuthGuard } from './auth/auth-guard';
-import { TokenIssuer } from './auth/token-issuer';
+import { AuthGuard } from "./auth/auth-guard";
+import { TokenIssuer } from "./auth/token-issuer";
 
-const app = express()
+const app = express();
 
-app.use(cors())
+app.use(cors());
 
-app.use(express.json())
+app.use(express.json());
 
-app.use('/auth', TokenIssuer)
+app.use("/auth", TokenIssuer);
 
-app.use(AuthGuard)
+app.use(AuthGuard);
 
-app.get('/', greeting.hello)
-app.use('/message', MessageAPI)
-app.use('/user', UserAPI)
+app.get("/", greeting.hello);
+app.use("/message", MessageAPI);
+app.use("/user", UserAPI);
 
 export default app;

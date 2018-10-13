@@ -1,15 +1,15 @@
-import * as express from 'express'
-import { UserManager } from '../services/user-manager';
+import * as express from "express";
+import { UserManager } from "../services/user-manager";
 
-var router = express.Router()
+const router = express.Router();
 
-router.post('/', (req, res) => {
-    UserManager.createUser({
-        username: req.body.username,
-        password: req.body.password
-    }).then(() => {
-        res.status(201).send({message: 'Created'})
-    })
-})
+router.post("/", (req, res) => {
+  UserManager.createUser({
+    username: req.body.username,
+    password: req.body.password,
+  }).then(() => {
+    res.status(201).send({ message: "Created" });
+  });
+});
 
-export { router as UserAPI }
+export { router as UserAPI };
