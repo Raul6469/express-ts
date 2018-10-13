@@ -11,6 +11,13 @@ const tokenOptions: jwt.SignOptions = {
 };
 
 router.post("/", async (req: Request, res: Response) => {
+  req.assert("username", "you must provide a username").notEmpty();
+  req.assert("password", "you must provide the password").notEmpty();
+
+  if (req.validationErrors()) {
+    return res.status(400).send(req.validationErrors());
+  }
+
   const user = await UserManager.authenticateUser(req.body.username, req.body.password);
 
   if (user) {

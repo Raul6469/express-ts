@@ -3,6 +3,7 @@ require("dotenv").config();
 import express from "express";
 
 const cors = require("cors");
+import expressValidator from "express-validator";
 
 import * as greeting from "./api/greeting";
 import { MessageAPI } from "./api/messages-route";
@@ -13,7 +14,7 @@ import { TokenIssuer } from "./auth/token-issuer";
 const app = express();
 
 app.use(cors());
-
+app.use(expressValidator());
 app.use(express.json());
 
 app.use("/auth", TokenIssuer);

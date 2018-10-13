@@ -4,6 +4,13 @@ import { UserManager } from "../services/user-manager";
 const router = express.Router();
 
 router.post("/", (req, res) => {
+  req.assert("username", "username must be provided").notEmpty();
+  req.assert("password", "password cannot be blank").notEmpty();
+
+  if (req.validationErrors()) {
+    return res.status(400).send(req.validationErrors());
+  }
+
   UserManager.createUser({
     username: req.body.username,
     password: req.body.password,

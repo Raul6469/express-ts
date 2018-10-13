@@ -28,6 +28,18 @@ describe("Authentication", () => {
       });
   });
 
+  it("should return 400 if missing parameters", (done) => {
+    request(app).post("/auth")
+      .send({
+        username: "raul"
+      })
+      .expect(400)
+      .then((response: any) => {
+        expect(response.body[0].param).toBe("password");
+        done();
+      });
+  });
+
   it("should return 401 if bad credentials are provided", (done) => {
     request(app).post("/auth")
       .send({
