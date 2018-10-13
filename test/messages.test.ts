@@ -3,9 +3,6 @@ import app from "../src/app";
 
 import { getAccessToken } from './helper/auth-helper';
 
-const chai = require("chai");
-const expect = chai.expect;
-
 let token: string;
 
 beforeAll(async () => {
@@ -25,8 +22,7 @@ describe("Messages", () => {
           .set('Authorization', 'Bearer ' + token)
           .expect(200)
           .then(response => {
-            expect(response.body).to.be.an('array');
-            expect(response.body[0]).to.have.deep.property('message', 'Hello')
+            expect(response.body[0].message).toBe('Hello');
             done();
           })
       })

@@ -3,9 +3,6 @@ import app from "../src/app";
 
 import { getAccessToken } from './helper/auth-helper';
 
-const chai = require("chai");
-const expect = chai.expect;
-
 let token: string;
 
 beforeAll(async () => {
@@ -26,7 +23,7 @@ describe("Authentication", () => {
       })
       .expect(200)
       .then((response: any) => {
-        expect(response.body.token).not.to.be.undefined;
+        expect(response.body.token).toBeDefined();
         done();
       });
   });
@@ -39,7 +36,7 @@ describe("Authentication", () => {
       })
       .expect(401)
       .then((response: any) => {
-        expect(response.body.token).to.be.undefined;
+        expect(response.body.token).toBeUndefined();
         done();
       });
   });
@@ -49,7 +46,7 @@ describe("Authentication", () => {
       .set('Authorization', 'Bearer ' + token)
       .expect(200)
       .then((response: any) => {
-        expect(response.body.message).to.equal('Hello raul!')
+        expect(response.body.message).toBe('Hello raul!')
         done();
       })
     })

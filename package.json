@@ -20,7 +20,6 @@
     "@types/jsonwebtoken": "^7.2.8",
     "@types/supertest": "^2.0.5",
     "bcrypt": "^3.0.1",
-    "chai": "^4.1.2",
     "concurrently": "^3.6.1",
     "cors": "^2.8.4",
     "dotenv": "^6.0.0",
