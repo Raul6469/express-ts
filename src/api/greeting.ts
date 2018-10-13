@@ -1,7 +1,7 @@
-import { Request, Response } from 'express'
+import { Request, Response } from "express";
 
-export let hello = function(req: Request, res: Response) {
-    res.send({
-        message: 'Hello ' + req.user.username + '!' 
-    })
-}
+export let hello = (req: Request, res: Response) => {
+  res.send({
+    message: "Hello " + req.user.username + "!",
+  });
+};
