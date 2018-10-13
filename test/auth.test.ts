@@ -21,7 +21,7 @@ describe("Authentication", () => {
   it("should return 200 if valid credentials are provided", (done) => {
     request(app).post("/auth")
       .send({
-        login: 'raul',
+        username: 'raul',
         password: 'pwd'
       })
       .expect(200)
@@ -34,7 +34,7 @@ describe("Authentication", () => {
   it("should return 401 if bad credentials are provided", (done) => {
     request(app).post("/auth")
       .send({
-        login: 'raul',
+        username: 'raul',
         password: 'notmypwd'
       })
       .expect(401)

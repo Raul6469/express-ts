@@ -29,7 +29,7 @@ POST /auth
 Body:
 ```json
 {
-	"login": "raul",
+	"username": "raul",
 	"password": "pwd"
 }
 ```
