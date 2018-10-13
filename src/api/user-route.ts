@@ -5,8 +5,7 @@ var router = express.Router()
 
 router.post('/', (req, res) => {
     UserManager.createUser({
-        id: null,
-        login: req.body.login,
+        username: req.body.username,
         password: req.body.password
     }).then(() => {
         res.status(201).send({message: 'Created'})

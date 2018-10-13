@@ -29,7 +29,7 @@ export class UserManager {
       let db = await MongoDB.Instance.getClient()
       let userDB = db.collection('users');
 
-      userDB.findOne({"login": username}, (err: MongoError, user: User) => {
+      userDB.findOne({"username": username}, (err: MongoError, user: User) => {
         if(err) {
           reject();
           return;
