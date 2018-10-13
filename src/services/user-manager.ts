@@ -2,17 +2,24 @@ import { User } from "../entities/user";
 import { MongoDB } from "../providers/mongodb";
 import { MongoError, WriteOpResult } from "mongodb";
 
+import * as bcrypt from "bcrypt";
+
 export class UserManager {
 
   public static async createUser(user: User): Promise<any> {
     return new Promise(async (resolve, reject) => {
-      let db = await MongoDB.Instance.getClient()
-      let userDB = db.collection('users');
+      bcrypt.hash(user.password, process.env.SALT_ROUNDS, async function(err, hash) {
+        if(err) reject();
+        user.password = hash;
 
-      userDB.insertOne(user, (err: MongoError, res: WriteOpResult) => {
-        if (!err) {
-          resolve();
-        }
+        let db = await MongoDB.Instance.getClient()
+        let userDB = db.collection('users');
+  
+        userDB.insertOne(user, (err: MongoError, res: WriteOpResult) => {
+          if (!err) {
+            resolve();
+          }
+        });
       });
     })
   }
@@ -27,7 +34,13 @@ export class UserManager {
           reject();
         }
 
-        user && user.password === password ? resolve(user) : resolve(null);
+        if(!user) {
+          resolve(null);
+        }
+
+        bcrypt.compare(password, user.password, function(err, res) {
+          res ? resolve(user) : resolve(null);
+        });
       })
     })
   }
