@@ -31,7 +31,7 @@ describe("Authentication", () => {
   it("should return 400 if missing parameters", (done) => {
     request(app).post("/auth")
       .send({
-        username: "raul"
+        username: "raul",
       })
       .expect(400)
       .then((response: any) => {
