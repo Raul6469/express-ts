@@ -8,7 +8,7 @@ export class UserManager {
 
   public static async createUser(user: User): Promise<any> {
     return new Promise(async (resolve, reject) => {
-      bcrypt.hash(user.password, process.env.SALT_ROUNDS, async function(err, hash) {
+      bcrypt.hash(user.password, Number(process.env.SALT_ROUNDS), async function(err, hash) {
         if(err) reject();
         user.password = hash;
 
