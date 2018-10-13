@@ -16,6 +16,12 @@ router.post("/", (req, res) => {
     password: req.body.password,
   }).then(() => {
     res.status(201).send({ message: "Created" });
+  }).catch((err) => {
+    if (err.message) {
+      res.status(400).send(err);
+    } else {
+      res.sendStatus(500);
+    }
   });
 });
 
