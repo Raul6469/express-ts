@@ -1,10 +1,10 @@
 declare namespace Express {
-    interface Request {
-        user?: UserPayload;
-    }
+  interface Request {
+    user?: UserPayload;
+  }
 }
 
 declare interface UserPayload {
-    id: number
-    username: string
+  id: number;
+  username: string;
 }

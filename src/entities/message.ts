@@ -1,4 +1,4 @@
 export class Message {
-    public id: number
-    public message: string
+  public id: number;
+  public message: string;
 }
