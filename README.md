@@ -1,4 +1,4 @@
-# express-ts [![Build Status](https://travis-ci.com/Raul6469/express-ts.svg?branch=master)](https://travis-ci.com/Raul6469/express-ts) [![codecov](https://codecov.io/gh/Raul6469/express-ts/branch/master/graph/badge.svg)](https://codecov.io/gh/Raul6469/express-ts)
+# express-ts [![Build Status](https://travis-ci.com/Raul6469/express-ts.svg?branch=master)](https://travis-ci.com/Raul6469/express-ts) [![codecov](https://codecov.io/gh/Raul6469/express-ts/branch/master/graph/badge.svg)](https://codecov.io/gh/Raul6469/express-ts) [![Maintainability](https://api.codeclimate.com/v1/badges/0627f1c3093f2a7c72c2/maintainability)](https://codeclimate.com/github/Raul6469/express-ts/maintainability) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/01cec4e5e46142899a3839e704eefeaa)](https://www.codacy.com/app/vb4007/express-ts?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Raul6469/express-ts&amp;utm_campaign=Badge_Grade)
 
 This is an attempt to build a simple REST API with Express, TypeScript and MongoDB, and unit testing with Jest. Feedback and contributions welcome!
 
