@@ -7,7 +7,7 @@ jobs:
       MONGODB_URL: "mongodb://localhost:27017/express-ts"
       DB_NAME: "express-ts"
     steps:
-    - bash: npm install
+    - bash: npm ci
       displayName: "Install dependencies"
     - bash: docker run -d -p 27017:27017 -v ~/data:/data/db mongo
       displayName: "Start MongoDB"
