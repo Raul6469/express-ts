@@ -11,7 +11,7 @@
     "build-watch": "tsc -w",
     "serve-debug": "nodemon --inspect dist/server.js",
     "lint": "tslint --project .",
-    "test": "npm run init-db && jest --forceExit --detectOpenHandles --coverage --reporters=default --reporters=\"jest-junit\""
+    "test": "npm run init-db && jest --forceExit --detectOpenHandles --coverage --coverageReporters=cobertura --reporters=default --reporters=\"jest-junit\""
   },
   "author": "",
   "license": "ISC",
