@@ -1,6 +1,7 @@
 ## Custom
 dist/
 db/
+output/
 
 # Logs
 logs

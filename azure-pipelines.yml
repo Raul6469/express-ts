@@ -13,6 +13,10 @@ jobs:
       displayName: "Start MongoDB"
     - bash: npm test
       displayName: "Run unit tests"
+    - task: PublishTestResults@2
+      inputs:
+        testResultsFormat: "JUnit"
+    - task: PublishCodeCoverageResults@1
   
   - job: lint
     pool:

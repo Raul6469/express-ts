@@ -11,7 +11,7 @@
     "build-watch": "tsc -w",
     "serve-debug": "nodemon --inspect dist/server.js",
     "lint": "tslint --project .",
-    "test": "npm run init-db && jest --forceExit --detectOpenHandles --coverage"
+    "test": "npm run init-db && jest --forceExit --detectOpenHandles --coverage --reporters=default --reporters=\"jest-junit\""
   },
   "author": "",
   "license": "ISC",
@@ -38,6 +38,11 @@
   },
   "devDependencies": {
     "@types/bcrypt": "3.0.0",
-    "@types/mongodb": "3.1.9"
+    "@types/mongodb": "3.1.9",
+    "jest-junit": "6.3.0"
+  },
+  "jest-junit": {
+    "outputDirectory": "./output",
+    "outputName": "./TEST-jest.xml"
   }
 }
