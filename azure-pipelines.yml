@@ -1,0 +1,24 @@
+name: "Build and test"
+jobs:
+  - job: unit_tests
+    pool:
+      vmImage: ubuntu-16.04
+    variables:
+      MONGODB_URL: "mongodb:27017/express-ts"
+      DB_NAME: "express-ts"
+    steps:
+    - bash: npm install
+      displayName: "Install dependencies"
+    - bash: docker run --name mongodb -d mongo:3.4-jessie
+      displayName: "Start MongoDB"
+    - bash: npm test
+      displayName: "Run unit tests"
+  
+  - job: lint
+    pool:
+      vmImage: ubuntu-16.04
+    steps:
+    - bash: npm install
+      displayName: "Install dependencies"
+    - bash: npm run lint
+      displayName: "Run linter"
