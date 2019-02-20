@@ -4,12 +4,12 @@ jobs:
     pool:
       vmImage: ubuntu-16.04
     variables:
-      MONGODB_URL: "mongodb:27017/express-ts"
+      MONGODB_URL: "mongodb://localhost:27017/express-ts"
       DB_NAME: "express-ts"
     steps:
     - bash: npm install
       displayName: "Install dependencies"
-    - bash: docker run --name mongodb -d mongo:3.4-jessie
+    - bash: docker run -d -p 27017:27017 -v ~/data:/data/db mongo
       displayName: "Start MongoDB"
     - bash: npm test
       displayName: "Run unit tests"
